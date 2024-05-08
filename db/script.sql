@@ -25,7 +25,7 @@ INSERT INTO jogador (nome, idade, habilidade, posicao, numero_camisa, equipe)
 VALUES ('Aldemir Ferreira', 26, 9, 'atacante', 47, 'sao paulo');
 
 INSERT INTO jogador (nome, idade, habilidade, posicao, numero_camisa, equipe)
-VALUES ('Giuliano Galoppo' 24, 9, 'meia', 8, 'sao paulo');
+VALUES ('Giuliano Galoppo', 24, 9, 'meia', 8, 'sao paulo');
 
 INSERT INTO jogador (nome, idade, habilidade, posicao, numero_camisa, equipe)
 VALUES ('Wellington Rato', 31, 8, 'meia', 27, 'sao paulo');
@@ -62,3 +62,19 @@ VALUES ('Welington', 23, 7, 'lateral esquerdo', 6, 'sao paulo');
 
 INSERT INTO jogador (nome, idade, habilidade, posicao, numero_camisa, equipe)
 VALUES ('Rafael Pires', 34, 10, 'goleiro', 23, 'sao paulo');
+
+CREATE TABLE batalha (
+    id SERIAL PRIMARY KEY,
+    id_jogador1 INT REFERENCES jogador(id),
+    id_jogador2 INT REFERENCES jogador(id),
+    id_ganhador INT REFERENCES jogador(id),
+    nome VARCHAR(100) NOT NULL,
+    idade INTEGER NOT NULL,
+    habilidade INTEGER NOT NULL,
+    posicao VARCHAR(50) NOT NULL,
+    numero_camisa INTEGER NOT NULL,
+    equipe VARCHAR(50) NOT NULL,
+    FOREIGN KEY (id_jogador1) REFERENCES jogador(id),
+    FOREIGN KEY (id_jogador2) REFERENCES jogador(id),
+    FOREIGN KEY (id_ganhador) REFERENCES jogador(id)
+);
